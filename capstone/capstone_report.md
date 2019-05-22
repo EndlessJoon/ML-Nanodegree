@@ -29,25 +29,39 @@ I will use RMSE for performance measurement.
 
 
 ### Data Exploration
-In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
-- _If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?_
-- _If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?_
-- _If a dataset is **not** present for this problem, has discussion been made about the input space or input data for your problem?_
-- _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
+&nbsp;I used Graduate Admission dataset from kaggle. (https://www.kaggle.com/mohansacharya/graduate-admissions)  
+This dataset contains 9 parameters:
+* Serial No. (1 to 500)
+* GRE Scores (290 to 340)
+* TOEFL Scores (92 to 120)
+* University Rating (1 to 5)
+* Statement of Purpose (1 to 5)
+* Letter of Recommendation Strength (1 to 5)
+* Undergraduate CGPA (6.8 to 9.92)
+* Research Experience (0 or 1)
+* Chance of Admit (0.34 to 0.97)
+
+&nbsp;I'll set 'Chance of Admit' parameter as the label and the remaining parameters as inputs to make a prediction model. Serial No. will be dropped in making the model because it is simply used for indexing purpose.
+As I showed in the jupyter notebook ('capstone.ipynb') this set has 400 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
+
 
 ### Exploratory Visualization
-In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant characteristic or feature about the dataset or input data?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
+At first, it is worth seeing data summary statistics as to get overall picture of data:
+![dd](https://www.dropbox.com/s/7s0pb9of0nwo5iw/dd.JPG?dl=1)  
+We can see every variable has 500 entries so there is no missing value in the dataset. And from the mean, standard deviation and the other statistics we can expect there are not abnomalities we should take care of before building up the prediction model.
+
+Next, we can see the correlations among variables through heatmap:
+![heatmap](https://www.dropbox.com/s/fhagc6hfalifxxk/heatmap.png?dl=1)
+From the heatmap, we can see the top three important variables which are highly related to the target variable (Chance of Admit) are CGPA, GRE Score and TOEFL Score.
+
 
 ### Algorithms and Techniques
-In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
-- _Are the algorithms you will use, including any default variables/parameters in the project clearly defined?_
-- _Are the techniques to be used thoroughly discussed and justified?_
-- _Is it made clear how the input data or datasets will be handled by the algorithms and techniques chosen?_
+For the regression problem like this, there are many algorithms which show good performance, Linear Regression, Decision Tree, Random Forest and so on. Though choosing anyone will be good I will choose Linear Regression because it is simple and easy to implement and understand. For the other algorithms I will use them as benchmark.  
+When I use Linear Regression algorithm, I will use "Chance of Admit" as a dependent(target) variable, and the others as independent(input) variables.
+
 
 ### Benchmark
+
 In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
 - _Has some result or value been provided that acts as a benchmark for measuring performance?_
 - _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
