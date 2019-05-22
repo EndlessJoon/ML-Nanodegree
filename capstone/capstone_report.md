@@ -42,7 +42,7 @@ This dataset contains 9 parameters:
 * Chance of Admit (0.34 to 0.97)
 
 &nbsp;I'll set 'Chance of Admit' parameter as the label and the remaining parameters as inputs to make a prediction model. Serial No. will be dropped in making the model because it is simply used for indexing purpose.
-As I showed in the jupyter notebook ('capstone.ipynb') this set has 400 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
+As I showed in the jupyter notebook ("capstone.ipynb") this set has 400 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
 
 
 ### Exploratory Visualization
@@ -56,8 +56,8 @@ From the heatmap, we can see the top three important variables which are highly 
 
 
 ### Algorithms and Techniques
-For the regression problem like this, there are many algorithms which show good performance, Linear Regression, Decision Tree, Random Forest and so on. Though choosing anyone will be good I will choose Linear Regression because it is simple and easy to implement and understand. For the other algorithms I will use them as benchmark.  
-When I use Linear Regression algorithm, I will use "Chance of Admit" as a dependent(target) variable, and the others as independent(input) variables.
+For the regression problem like this, there are many algorithms which show good performance, Linear Regression, Decision Tree, Random Forest and so on. Though choosing anyone would be good I chose Linear Regression because it is simple, easy to implement and understand. For the other algorithms I used them as benchmarks.  
+When I used Linear Regression algorithm, I used "Chance of Admit" as a dependent(target) variable, and the others as independent(input) variables. I implemented all these in the jupyter notebook. ("capstone.ipynb")
 
 
 ### Benchmark
