@@ -62,15 +62,27 @@ When I used Linear Regression algorithm, I used "Chance of Admit" as a dependent
 
 ### Benchmark
 
-In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
-- _Has some result or value been provided that acts as a benchmark for measuring performance?_
-- _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
+I benchmarked several algrithms not only in regression category but also in classification category: 
+* Decision Tree
+* Random Forest
+* Support Vector Machine
+* Gaussian Naive Bayes
+* K Nearest Neighbor
+
+Each benchmark was performed on training data set at first, and then on validation set.
+For the validation, I used Scikit Learn's k-fold cross-validation. It randomly splits the training set into k distinct subsets called folds, then it trains and evaluates the model k times, picking a different fold for evaluation every time and training on the other k-1 folds. (I can decide and give the number k to the cross-validation function as a parameter)  
+The results are as follows:
+
+
 
 
 ## III. Methodology
-_(approx. 3-5 pages)_
+
 
 ### Data Preprocessing
+As I mentioned above, any abnormalities in data set did not found. Furthermore, there is no categorical variable so we can focus our consideration on preprocessing for numerical variables.  
+When we look at the data statistics (see Data Exploration section above) the value scale ranges are different among variables, we need to adjust scale to get more accurate results.  
+Scikit learn provides many scaling methods. They include Standard scaler, MinMaxScaler, 
 In this section, all of your preprocessing steps will need to be clearly documented, if any were necessary. From the previous section, any of the abnormalities or characteristics that you identified about the dataset will be addressed and corrected here. Questions to ask yourself when writing this section:
 - _If the algorithms chosen require preprocessing steps like feature selection or feature transformations, have they been properly documented?_
 - _Based on the **Data Exploration** section, if there were abnormalities or characteristics that needed to be addressed, have they been properly corrected?_
