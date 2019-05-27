@@ -80,15 +80,20 @@ The results are as follows:
 
 
 ### Data Preprocessing
-As I mentioned above, any abnormalities in data set did not found. Furthermore, there is no categorical variable so we can focus our consideration on preprocessing for numerical variables.  
+As I mentioned above, any abnormalities in data set did not found. Furthermore, as there is no categorical variable, we can focus our consideration on preprocessing for numerical variables.  
 When we look at the data statistics (see Data Exploration section above) the value scale ranges are different among variables, we need to adjust scale to get more accurate results.  
-Scikit learn provides many scaling methods. They include Standard scaler, MinMaxScaler, 
-In this section, all of your preprocessing steps will need to be clearly documented, if any were necessary. From the previous section, any of the abnormalities or characteristics that you identified about the dataset will be addressed and corrected here. Questions to ask yourself when writing this section:
-- _If the algorithms chosen require preprocessing steps like feature selection or feature transformations, have they been properly documented?_
-- _Based on the **Data Exploration** section, if there were abnormalities or characteristics that needed to be addressed, have they been properly corrected?_
-- _If no preprocessing is needed, has it been made clear why?_
+Scikit learn provides some scaling methods including Standard scaler, MinMax Scaler, and so on.  
+I used MinMaxScaler which scales every numerical data into (0, 1).
+
 
 ### Implementation
+1. Define Input & Output : As a first step, I defined output(target) variable and input variables for a prediction model.  
+Output is "Chance of Admit" and the remaining variables are inputs to be used for the prediction. Among the variables, "Serial No." was dropped.
+  
+2. Split Train & Test set : Next, I splitted the data set into train and test set. Train set will be used for model implementation and test set will be used for measuring the implemented model's prediction performance for unseen data.
+For splitting, I used Scikit learn's train_test_split function with proper argument settings ( test set size to be 20% of data set and random state to be 42 which will be used as a seed by random number generator)
+
+3. 
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
 - _Is it made clear how the algorithms and techniques were implemented with the given datasets or input data?_
 - _Were there any complications with the original metrics or techniques that required changing prior to acquiring a solution?_
