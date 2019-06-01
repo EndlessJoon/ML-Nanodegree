@@ -64,10 +64,12 @@ When I used Linear Regression algorithm, I used "Chance of Admit" as a dependent
 
 I benchmarked several algrithms not only in regression category but also in classification category: 
 * Decision Tree
-* Random Forest
-* Support Vector Machine
+* Random Forest 
+* KNN(K Nearest Neighbor)
 * Gaussian Naive Bayes
-* K Nearest Neighbor
+* Decision Tree Classifier
+* Random Forest Classifier
+* Logistic Regression
 
 Each benchmark was performed on training data set at first, and then on validation set.
 For the validation, I used Scikit Learn's k-fold cross-validation. It randomly splits the training set into k distinct subsets called folds, then it trains and evaluates the model k times, picking a different fold for evaluation every time and training on the other k-1 folds. (I can decide and give the number k to the cross-validation function as a parameter)  
@@ -102,16 +104,15 @@ Scikit learn provides many machine learning algorithms. To use linear regression
 5. Measure Performance : To measure our prediction model's performance, some metrics are needed. I chose RMSE for measuring my regression model's performance.  
 To use that, I imported mean_squared_error from sckit learn and gave train data label and the prediction result from step 4 as function arguments. And then applied numpy's square root function to get RMSE.
  
-6. Compare with test data set : After prediction and measurement with test data, to see the performance of my prediction model on unseen data, I performed prediction and measurement (wth RMSE) again on test data set. If the RMSE of train set is far lower than that of test set, this means my model is overfit. My result was train RMSE:  and test RMSE: which means the overfit was found in my model.
+6. Compare with test data set : After prediction and measurement with train data, to see the performance of my prediction model on unseen data, I performed prediction and measurement (wth RMSE) again on test data set. If the RMSE of train set is far lower than that of test set, this means overfitting happens. My result was train RMSE: 0.0593 and test RMSE: 0.0608, nearly same two numbers, which means overfitting did not happen in my linear regression model.
 
-7. Benchmark : To benchmark, I tried some other regression algorithms including Decision Tree, Random Forest. Also, for wider benchmarking I tried some classification algorithms including 
-KNN, Gaussian Naive Bayes, Decision Tree Classifier, Random Forest Classifier and Logistic Regression. To use these classification algorithms I needed to define binary classification label. I divided the target variable - Chance of Admit - into two classes, 1 and 0. When the Chance of Admit is greater than or equal to 80%, the data instance is labelled with '1' and another case(Chance of Admit is less than 80%) is labelled with '0'. For metric I used Sckit learn's score method(the mean accuracy on the given test data and labels) as well as f1 Score(weighted average of the precision and recall)
+7. Benchmark : To benchmark, I tried some other regression algorithms including Decision Tree, Random Forest. Also, for wider benchmarking I tried some classification algorithms including KNN, Gaussian Naive Bayes, Decision Tree Classifier, Random Forest Classifier and Logistic Regression. To use these classification algorithms I needed to define binary classification label. I divided the target variable - Chance of Admit - into two classes, 1 and 0. When the Chance of Admit is greater than or equal to 80%, the data instance is labelled with '1' and another case(Chance of Admit is less than 80%) is labelled with '0'. For metric I used Sckit learn's score method(the mean accuracy on the given test data and labels) as well as f1 Score(weighted average of the precision and recall)
 
 8. Benchmark Results : 
 * Regression Algorithms Benchmark Results
-Linear Regression: RMSE(train)- , RMSE(test)-
-Decision Tree: RMSE(train)- , RMSE(test)-
-Random Forest: RMSE(train)- , RMSE(test)-  
+[Linear Regression] RMSE(train): 0.0593 , RMSE(test): 0.0608
+[Decision Tree] RMSE(train): 1.6653e-17, RMSE(test): 0.0929
+[Random Forest] RMSE(train): 0.0250, RMSE(test): 0.06516 
 
 * Classification Algorithms Benchmark Results
 KNN: score- , f1 Score-
