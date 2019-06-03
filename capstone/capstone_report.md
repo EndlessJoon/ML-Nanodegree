@@ -63,18 +63,18 @@ When I used Linear Regression algorithm, I used "Chance of Admit" as a dependent
 ### Benchmark
 
 I benchmarked several algrithms not only in regression category but also in classification category: 
+* Linear Regression
 * Decision Tree
 * Random Forest 
-* KNN(K Nearest Neighbor)
+* SVM(Support Vector Machine)
 * Gaussian Naive Bayes
 * Decision Tree Classifier
 * Random Forest Classifier
 * Logistic Regression
 
-Each benchmark was performed on training data set at first, and then on validation set.
-For the validation, I used Scikit Learn's k-fold cross-validation. It randomly splits the training set into k distinct subsets called folds, then it trains and evaluates the model k times, picking a different fold for evaluation every time and training on the other k-1 folds. (I can decide and give the number k to the cross-validation function as a parameter)  
-The results are as follows:
-
+Each benchmark was performed on train data set at first, and then on test set.
+Thinking of overfitting due to small data size, I used Scikit Learn's k-fold cross-validation for refinement. It randomly splits the training set into k distinct subsets called folds, then it trains and evaluates the model k times, picking a different fold for evaluation every time and training on the other k-1 folds. (I can decide and give the number k to the cross-validation function as a parameter)  
+The results are in the following Implementation section.
 
 
 
@@ -110,25 +110,32 @@ To use that, I imported mean_squared_error from sckit learn and gave train data 
 
 8. Benchmark Results : 
 * Regression Algorithms Benchmark Results
-[Linear Regression] RMSE(train): 0.0593 , RMSE(test): 0.0608
+[Linear Regression] RMSE(train): 0.0593, RMSE(test): 0.0608
 [Decision Tree] RMSE(train): 1.6653e-17, RMSE(test): 0.0929
-[Random Forest] RMSE(train): 0.0250, RMSE(test): 0.06516 
+[Random Forest] RMSE(train): 0.0250, RMSE(test): 0.0651 
 
 * Classification Algorithms Benchmark Results
-KNN: score- , f1 Score-
-Gaussian Naive Bayes: score- , f1 score-
+[SVM] score: 0.97, f1 Score: 0.94
+[Gaussian Naive Bayes] score: 0.93, f1 score: 0.88
+[Decision Tree Classifier] score: 0.95, f1 score: 0.91
+[Random Forest Classifier] score: 0.96, f1 score: 0.92
+[Logistic Regression] score: 0.96, f1 score: 0.92
 
 ### Refinement
 I divided the original data set into two groups - train, test set - to train(fit)the model with train set and test the model for unseen data. But overfit problem occurred for some models especially it was serious on decision tree algorithm (RMSE for train set was nearly zero!)  
 There can be many reasons that this overfitting problem occurs but the small size of data set is major reason, I think.
 To address this, I tried cross validation technique which divides the data set into smaller groups and uses one by one as the validation data set. Scikit learn privides cross_val_score function so I imported it and made 10 subgroups (by setting 'cv' parameter to be 10). I used 'negative mean squared error' as a 'scoring' parameter for cross_val_score function. Scikit learn cross-validation features expect a utility function (greater is beter) rather than a cost function (lower is better), so the scoring function is actually the opposite of the MSE(i.e., a negative value), which is why I used 'negatieve mean squared error' and computed '-scores' before calculating the square root in the code file('capstone.ipynb').  
 As cross validation made 10 RMSE values, so I calculated mean and standard deviation of them and I repeated this process for three regression algorithms: Linear Regression, Decision Tree, Random Forest.  
-The cross validation results are as follows:
+The cross validation results are as follows: (RMSE Mean for test data set)  
+[Linear Regression] 0.059
+[Decision Tree] 0.085
+[Random Forest] 0.064
+Comparing to the benchmark results in Implementation section, we can see that they are considerably improved.
 
 
 
 ## IV. Results
-_(approx. 2-3 pages)_
+
 
 ### Model Evaluation and Validation
 In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
