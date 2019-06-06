@@ -42,7 +42,7 @@ This dataset contains 9 parameters:
 * Chance of Admit (0.34 to 0.97)
 
 &nbsp;I'll set 'Chance of Admit' parameter as the label and the remaining parameters as inputs to make a prediction model. Serial No. will be dropped in making the model because it is simply used for indexing purpose.
-As I showed in the jupyter notebook ("capstone.ipynb") this set has 400 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
+As I showed in the jupyter notebook ("capstone.ipynb") this set has 500 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
 
 
 ### Exploratory Visualization
@@ -110,16 +110,24 @@ To use that, I imported mean_squared_error from sckit learn and gave train data 
 
 8. Benchmark Results : 
 * Regression Algorithms Benchmark Results
-[Linear Regression] RMSE(train): 0.0593, RMSE(test): 0.0608
-[Decision Tree] RMSE(train): 1.6653e-17, RMSE(test): 0.0929
-[Random Forest] RMSE(train): 0.0250, RMSE(test): 0.0651 
+ 
+|Algorithm|RMSE(train)|RMSE(test)|
+|:--------:|:--------:|:--------:|
+|Linear Regression|0.0593|0.0608|
+|Decision Tree|1.6653e-17|0.0929|
+|Random Forest|0.0250|0.0651|
 
 * Classification Algorithms Benchmark Results
-[SVM] score: 0.97, f1 Score: 0.94
-[Gaussian Naive Bayes] score: 0.93, f1 score: 0.88
-[Decision Tree Classifier] score: 0.95, f1 score: 0.91
-[Random Forest Classifier] score: 0.96, f1 score: 0.92
-[Logistic Regression] score: 0.96, f1 score: 0.92
+
+|Algorithm|Score|F1 Score|
+|:--------:|:--------:|:--------:|
+|SVM|0.97|0.94|
+|Gaussian Naive Bayes|0.93|0.88|
+|Decision Tree Classifier|0.95|0.91|
+|Random Forest Classifier|0.96|0.92|
+|Logistic Regression|0.96|0.92|
+
+
 
 ### Refinement
 I divided the original data set into two groups - train, test set - to train(fit)the model with train set and test the model for unseen data. But overfit problem occurred for some models especially it was serious on decision tree algorithm (RMSE for train set was nearly zero!)  
