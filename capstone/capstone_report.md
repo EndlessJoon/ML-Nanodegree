@@ -138,24 +138,30 @@ The cross validation results are as follows: (RMSE Mean for test data set)
 
 
 ### Model Evaluation and Validation
-To test my final model, I tried some input data and compared the predicted outputs with labels.(see source code in 'capstone.ipynb')  
-The results are as follows:
+To test my final model, I tried some test data and compared the predicted outputs with labels.(see source code in 'capstone.ipynb')  
+The part of results are as follows:  
+|Index|Prediction|Real|
+|:--------:|:--------:|:--------:|
+|0|0.91|0.93|
+|10|0.72|0.45|
+|20|0.67|0.67|
+|30|0.56|0.59|
+|40|0.97|0.96|
+|50|0.89|0.93|
+|60|0.63|0.68|
+|70|0.62|0.64|
+|80|0.77|0.80|
+|90|0.74|0.73|
+My final model seems to work well and is making reasonable outputs for test(unseen) data.
 
-In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
-- _Is the final model reasonable and aligning with solution expectations? Are the final parameters of the model appropriate?_
-- _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
-- _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
-- _Can results found from the model be trusted?_
 
 ### Justification
 To compare my final model with benchmarks, I repeated the above process: I entered the same input data into the benchmark models and compared the results. (see the source code in 'capstone.ipynb')  
-The results are as follows:
+I attached the resulting plot here:
+![comparison](https://www.dropbox.com/s/4ul4y6jmkcgb1jw/comparison.png?dl=1)
+I plotted 3 predictions (LR,DT,RF) and real values(labels) for 10 test data.(Index 0, 10, 20, 30, 40, 50, 60, 70, 80, 90)  
+Except in index 10, Linear Regression model's prediction is closer to the real value or at least nearly same as the other model's predictions.
 
-
-In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
-- _Are the final results found stronger than the benchmark result reported earlier?_
-- _Have you thoroughly analyzed and discussed the final solution?_
-- _Is the final solution significant enough to have solved the problem?_
 
 
 ## V. Conclusion
@@ -170,16 +176,10 @@ From the heatmap, we can see the top three important variables which are highly 
 
 ### Reflection
 In this project I made a prediction model to predict the 'chance of admit' for a graduate school with some input features including CGPA, GRE score, TOEFL score and so on.  
-To make the model I benchmarked many algorithms in regression as well as classification models. For a metric I used RMSE (Root Mean Square Error) and used it to meaure the performance of algorithms. After benchmarking I got my final model (Linear Regression model) and test it with some input data.  
-One interesting thing was occurred in fitting the train data with Decision Tree algorithm. The metric - RMSE - was nearly zero. At first, I thought there must be some calculation error or parameter setting error, but I came to know it was significant overfitting. To address this overfitting problem, I used Cross Validation which divides the original data set into small groups and use them as validation data. After benchmarks and refinement I came to get my final model. 
+To make the model I benchmarked many algorithms in regression as well as classification models. For a metric I used RMSE (Root Mean Square Error) and used it to meaure the performance of algorithms. After benchmarking I got my final model (Linear Regression model) and tested it with some input data.  
+One interesting thing occurred in fitting the train data with Decision Tree algorithm. The metric - RMSE - was nearly zero. At first, I thought there must be some calculation error or parameter setting error, but I came to know it was significant overfitting. To address this overfitting problem, I used Cross Validation which divides the original data set into small groups and use them as validation data. After benchmarks and refinement I came to get my final model. 
 
 
-
-In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
-- _Have you thoroughly summarized the entire process you used for this project?_
-- _Were there any interesting aspects of the project?_
-- _Were there any difficult aspects of the project?_
-- _Does the final model and solution fit your expectations for the problem, and should it be used in a general setting to solve these types of problems?_
 
 ### Improvement
 The target variable I used in this project was the interviewees' reply (how much possibility(0% ~ 100% range) they expect they got the admission acceptance from the graduate school with there track records (i.e. the features including CGPA, GRE, TOEFL, and so on))  
@@ -187,20 +187,5 @@ In other words, the label in this supervised learning problem was not the real r
 If I can collect the sufficiently many real acceptance data (Yes or No), and use them as labels I can make more useful prediction model.
 
 
-
-In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
-- _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
-- _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
-- _If you used your final solution as the new benchmark, do you think an even better solution exists?_
-
 -----------
 
-**Before submitting, ask yourself. . .**
-
-- Does the project report you’ve written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Analysis** and **Methodology**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your analysis, methods, and results?
-- Have you properly proof-read your project report to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
-- Is the code that implements your solution easily readable and properly commented?
-- Does the code execute without error and produce results similar to those reported?
