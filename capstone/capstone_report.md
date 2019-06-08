@@ -49,7 +49,15 @@ This dataset contains 9 parameters:
 * Chance of Admit (0.34 to 0.97)
 
 Let's see some real data in this dataset to have a sense for how the raw data look:
+> &gt; admission.head()
 
+|Serial No.|GRE Score|TOEFL Score|University Rating|SOP|LOR|CGPA|Research|Chance of Admit|
+|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|1|337|118|4|4.5|4.5|9.65|1|0.92|
+|2|324|107|4|4.0|4.5|8.87|1|0.76|
+|3|316|104|3|3.0|3.5|8.00|1|0.72|
+|4|322|110|3|3.5|2.5|8.67|1|0.80|
+|5|314|103|2|2.0|3.0|8.21|0|0.65|
 
 &nbsp;I'll set 'Chance of Admit' parameter as the label and the remaining parameters as inputs to make a prediction model. Serial No. will be dropped in making the model because it is simply used for indexing purpose.
 As I showed in the jupyter notebook ("capstone.ipynb") this set has 500 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
