@@ -68,7 +68,8 @@ We can see every variable has 500 entries so there is no missing value in the da
 
 
 ### Exploratory Visualization
-
+By plotting some variables we can have more in-depth understanding of each variable as well as the relationship among the variables.
+[Fig 1] shows 
 
 Next, by using panda's corr() function we can determine the most important variables which are highly related to the target variable ('Chance of Admit') are CGPA, GRE Score, and TOEFL Score. (See the source code in "capstone.ipynb")  
 We can see the correlations among them by plotting the correlation matrix:
