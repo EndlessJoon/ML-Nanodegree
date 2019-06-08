@@ -61,13 +61,14 @@ Let's see some real data in this dataset to have a sense for how the raw data lo
 
 &nbsp;I'll set 'Chance of Admit' parameter as the label and the remaining parameters as inputs to make a prediction model. Serial No. will be dropped in making the model because it is simply used for indexing purpose.
 As I showed in the jupyter notebook ("capstone.ipynb") this set has 500 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
-Let's look at some variables to 
+Let's look at summary statistics of variables to get overall picture of data:
+![dd](https://www.dropbox.com/s/7s0pb9of0nwo5iw/dd.JPG?dl=1) 
+We can see every variable has 500 entries so there is no missing value in the dataset. And from the mean, standard deviation and the other statistics we can expect there are not abnomalities we should take care of before building up the prediction model. Lastly, when we look at GRE Score and TOEFL Score, they are mostly three-digit numbers. But the other variables are one-digit numbers. This means we need some data preprocessing like scaling to get better model.
+
 
 
 ### Exploratory Visualization
-At first, it is worth seeing data summary statistics as to get overall picture of data:
-![dd](https://www.dropbox.com/s/7s0pb9of0nwo5iw/dd.JPG?dl=1)  
-We can see every variable has 500 entries so there is no missing value in the dataset. And from the mean, standard deviation and the other statistics we can expect there are not abnomalities we should take care of before building up the prediction model.
+
 
 Next, by using panda's corr() function we can determine the most important variables which are highly related to the target variable ('Chance of Admit') are CGPA, GRE Score, and TOEFL Score. (See the source code in "capstone.ipynb")  
 We can see the correlations among them by plotting the correlation matrix:
