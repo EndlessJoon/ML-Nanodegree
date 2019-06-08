@@ -17,12 +17,19 @@ The solution to the problem is the confidence level that the applicants can expe
 
 
 ### Metrics
-There are many metrics to measure performance of regression problem including RMSE, R squared and so on:
+There are many metrics to measure performance of regression problem including RMSE, MAE, R squared and so on:
  * RMSE(Root Mean Square Error): This measures the standard deviation of the errors the system makes in its predictions. Smaller is better.
+ * MAE(Mean Absolote Error): This measures the average magnitude of the errors in a set of predictions, without considering their direction. It’s the average over the test sample of the absolute differences between prediction and actual observation where all individual differences have equal weight.
  * R squared(Coefficient of Determination): This is the proportion of the variance in the dependent variable that is predictable from the independent variables. Larger is better.  
 
-I will use RMSE for performance measurement.
+There are many discussions about which metric is better for many circumstances. Actually, in my project there will not be big difference on which metric I choose so I can use any of them at this time, but I chose RMSE because I want to take precision first, penalize large prediction errors more and computationally simple metric. Although MAE is also computationally simple and easy to understand, RMSE penalize large errors more than MAE.(I've referred to this article: https://medium.com/human-in-a-machine-world/mae-and-rmse-which-metric-is-better-e60ac3bde13d)  Compared to R squared, RMSE is better option for a metric with the 'precision-first' objective. (My reference about this: https://www.kdnuggets.com/2018/04/right-metric-evaluating-machine-learning-models-1.html)  
 
+Secondly, I benchmarked a few classification algorithms so I need another metric suitable for comparing classification models. As for regression models, there are many metrics for classification models including AUC-ROC Curve, Log loss, F-Beta score, F1 score, an so on.  
+Among them I will use F1 score as a metric because it is commonly used for many classification problems and easy to understand. (Actually, I have more knowledge and experience in F1 score than another metrics. )  
+F1 Score is harmonic mean of precision and recall. That is, F1 = 2*precision*recall / (precision + recall)  
+'Precision' is the number of correct positive results divided by the number of all positive results returned by the classifier.  
+'Recall' is the number of correct positive results divided by the number of all relevant samples (all samples that should have been identified as positive).  
+(For more detail, please refer to this: https://en.wikipedia.org/wiki/F1_score) 
 
 
 ## II. Analysis
