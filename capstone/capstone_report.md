@@ -29,7 +29,7 @@ Among them I will use F1 score as a metric because it is commonly used for many 
 F1 Score is harmonic mean of precision and recall. That is, F1 = 2*precision*recall / (precision + recall)  
 'Precision' is the number of correct positive results divided by the number of all positive results returned by the classifier.  
 'Recall' is the number of correct positive results divided by the number of all relevant samples (all samples that should have been identified as positive).  
-(For more detail, please refer to this: https://en.wikipedia.org/wiki/F1_score) 
+(For more detail, please refer to these links:https://medium.com/thalus-ai/performance-metrics-for-classification-problems-in-machine-learning-part-i-b085d432082b  https://en.wikipedia.org/wiki/F1_score) 
 
 
 ## II. Analysis
@@ -48,8 +48,12 @@ This dataset contains 9 parameters:
 * Research Experience (0 or 1)
 * Chance of Admit (0.34 to 0.97)
 
+Let's see some real data in this dataset to have a sense for how the raw data look:
+
+
 &nbsp;I'll set 'Chance of Admit' parameter as the label and the remaining parameters as inputs to make a prediction model. Serial No. will be dropped in making the model because it is simply used for indexing purpose.
 As I showed in the jupyter notebook ("capstone.ipynb") this set has 500 entries, all variables are numeric (there is no categorical variable) and missing values or abnormalities about data were not found.
+Let's look at some variables to 
 
 
 ### Exploratory Visualization
