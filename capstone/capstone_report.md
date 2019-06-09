@@ -106,7 +106,16 @@ We can see the correlations among them by plotting the correlation matrix:
 
 
 ### Algorithms and Techniques
-For the regression problem like this, there are many algorithms which show good performance, Linear Regression, Decision Tree, Random Forest and so on. Though choosing anyone would be good I chose Linear Regression because it is simple, easy to implement and understand. For the other algorithms I used them as benchmarks.  
+For the regression problem like this, there are many algorithms which show good performance, Linear Regression, Decision Tree, Random Forest and so on.  
+Let's look at each algorithm briefly:
+
+[ Linear Regression ]
+* Linear Regression establishes a relationship between dependent variable (Y) and one or more independent variables (X) using a best fit straight line (also known as regression line).
+* It is represented by an equation Y=a+b*X + e, where a is intercept, b is slope of the line and e is error term. This equation can be used to predict the value of target variable based on given predictor variable(s).
+* Pros: easy to undertand, simple to implement and very fast
+* Cons: There must be linear relationship between independent and dependent variables. It is very sensitive to Outliers. It can terribly affect the regression line and eventually the forecasted values. 
+
+Though choosing anyone would be good I chose Linear Regression because it is simple, easy to implement and understand. For the other algorithms I used them as benchmarks.  
 When I used Linear Regression algorithm, I used "Chance of Admit" as a dependent(target) variable, and the others as independent(input) variables. I implemented all these in the jupyter notebook. ("capstone.ipynb")
 
 
