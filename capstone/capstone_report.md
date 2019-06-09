@@ -69,7 +69,18 @@ We can see every variable has 500 entries so there is no missing value in the da
 
 ### Exploratory Visualization
 By plotting some variables we can have more in-depth understanding of each variable as well as the relationship among the variables.
-[Fig 1] shows 
+[Fig 1] shows the distribution of our target variable, 'Chance of Admit'.  
+We can see that most applicants think that their chance of admit is over 60% and the largest portion is in 60~80% range.  
+![Fig1](https://www.dropbox.com/s/9xy4525m7uwx88g/hist_CofA.png?dl=1)  
+Let's look at one more distribution.  
+[Fig 2] shows the distribution of TOEFL Score. We can see that most applicants have scores over 100. (pretty high-level applicants)  
+![Fig3](https://www.dropbox.com/s/8hvt98afcot19zy/hist_Toefl.png?dl=1)
+
+Congregated histogram of all variables is in [Fig 3].  
+
+
+
+
 
 Next, by using panda's corr() function we can determine the most important variables which are highly related to the target variable ('Chance of Admit') are CGPA, GRE Score, and TOEFL Score. (See the source code in "capstone.ipynb")  
 We can see the correlations among them by plotting the correlation matrix:
