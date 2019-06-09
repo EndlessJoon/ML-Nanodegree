@@ -74,15 +74,33 @@ We can see that most applicants think that their chance of admit is over 60% and
 ![Fig1](https://www.dropbox.com/s/9xy4525m7uwx88g/hist_CofA.png?dl=1)  
 Let's look at one more distribution.  
 [Fig 2] shows the distribution of TOEFL Score. We can see that most applicants have scores over 100. (pretty high-level applicants)  
-![Fig3](https://www.dropbox.com/s/8hvt98afcot19zy/hist_Toefl.png?dl=1)
+![Fig2](https://www.dropbox.com/s/8hvt98afcot19zy/hist_Toefl.png?dl=1)
 
-Congregated histogram of all variables is in [Fig 3].  
+Congregated histogram of all variables is here:
+![hist_all](https://www.dropbox.com/s/mzn8o9b3lk6dmyw/hist_all.png?dl=1)
 
+Now, let's see the relations between some variables.  
+We can see the relationship between TOEFL Score and CGPA in [Fig 3].  
+![Fig3](https://www.dropbox.com/s/zusg1v44rvgkf93/TOEFL_CGPA.png?dl=1)
+This scatter plot shows that CGPA is positively related to TOEFL Score. In other words, the applicants who have high CGPA also tend to have high TOEFL Score and vise versa.  
+We can find the most important features which are higly correlated to the target with following code:
+> corr_matrix = admission.corr()
+> corr_matrix["Chance of Admit "].sort_values(ascending=False)
 
+|Feature|Corr|
+|:--------:|:--------:|
+|Chance of Admit|1.000000|
+|CGPA|0.882413|
+|GRE Score|0.810351|
+|TOEFL Score|0.792228|
+|University Rating|0.690132|
+|SOP|0.684137|
+|LOR|0.645365|
+|Research|0.545871|
+|Serial No.|0.008505|
+In this table, 'Corr' represents the strength of relationship between each feature and the target ('Chance of Admit'). Corr can take a number (-1, 1), if Corr is close to -1 it means they are negatively related, or if Corr is close to 0, it means they are not related, or if Corr is close to 1 it means they are positively related.
 
-
-
-Next, by using panda's corr() function we can determine the most important variables which are highly related to the target variable ('Chance of Admit') are CGPA, GRE Score, and TOEFL Score. (See the source code in "capstone.ipynb")  
+Now we know that top three important variables which are highly related to the target variable ('Chance of Admit') are CGPA, GRE Score, and TOEFL Score. 
 We can see the correlations among them by plotting the correlation matrix:
 ![corr_matrix](https://www.dropbox.com/s/frcn7b2d1dc6w8q/corr_matrix.png?dl=1)
 
