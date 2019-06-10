@@ -130,7 +130,7 @@ I benchmarked several algrithms not only in regression category but also in clas
 * Random Forest Classifier
 * Logistic Regression
 
-Let's look at briefly each benchmark algorithm:
+Let's take a look at briefly each benchmark algorithm:
 |Algorithm|Explanation|
 |:--------:|:--------|
 |Decision Tree|Decision tree can be used to classification and regression both having a tree like structure. In a decision tree building algorithm first the best attribute of dataset is placed at the root, then training dataset is split into subsets. Splitting of data depends on the features of datasets. This process is done until the whole data is classified and we find leaf node at each branch. Information gain can be calculated to find which feature is giving us the highest information gain. Decision trees are built for making a training model which can be used to predict class or the value of target variable.|
@@ -211,7 +211,7 @@ The hyperparameters for each benchmark algorithm I used are as follows:
 9. Try cross validation with different validation sets : I divided the original data set into two groups - train, test set - to train(fit)the model with train set and test the model for unseen data. But overfit problem occurred for some models especially it was serious on decision tree algorithm (RMSE for train set was nearly zero!)  
 There can be many reasons that this overfitting problem occurs but the small size of data set is major reason, I think.
 To address this, I tried cross validation technique which divides the data set into smaller groups and uses one by one as the validation data set. Scikit learn privides cross_val_score function so I imported it and made 10 subgroups (by setting 'cv' parameter to be 10). I used 'negative mean squared error' as a 'scoring' parameter for cross_val_score function. Scikit learn cross-validation features expect a utility function (greater is beter) rather than a cost function (lower is better), so the scoring function is actually the opposite of the MSE(i.e., a negative value), which is why I used 'negatieve mean squared error' and computed '-scores' before calculating the square root in the code file('capstone.ipynb').  
-As cross validation made 10 RMSE values, so I calculated mean and standard deviation of them and I repeated this process for three regression algorithms: Linear Regression, Decision Tree, Random Forest.  
+As cross validation made 10 RMSE values, I calculated mean and standard deviation of them and I repeated this process for three regression algorithms: Linear Regression, Decision Tree, Random Forest.  
 The cross validation results are as follows: (RMSE Mean for test data set)  
 * [Linear Regression] 0.059
 * [Decision Tree] 0.085
@@ -220,6 +220,9 @@ The cross validation results are as follows: (RMSE Mean for test data set)
 
 
 ### Refinement
+I tried to refine the prediction model with hyperparameter tuning. As there is no room for hyperparameter tuning in Linear Regression, I tried with Random Forest algorithm.  
+To find out the best hyperparameter combination, I used Grid Search of Scikit Learn. And the next, I also tried Randomized Search to compare the result.  
+At first, let's take a look at briefly these two methods:
 
 
 
