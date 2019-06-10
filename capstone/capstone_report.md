@@ -322,10 +322,10 @@ My final model seems to work well and is making reasonable outputs for test(unse
 
 
 ### Justification
-To compare my final model with benchmarks, I repeated the above process: I entered the same input data into the benchmark models and compared the results. (see the source code in 'capstone.ipynb')  
+To compare my final model with benchmarks, I entered 50 test data into the benchmark models as well as my final model and compared the results. (see the source code in 'capstone.ipynb')  
 I attached the resulting plot here:
-![comp](https://www.dropbox.com/s/sk90bu0b5m2693f/comparison.png?dl=1)
-I plotted 3 predictions (Linear Regression, Decision Tree, My Final Model) and real values(labels) for 10 test data.(Index 0, 10, 20, 30, 40, 50, 60, 70, 80, 90)  
+![comp](https://www.dropbox.com/s/axz5qjfjud0slfz/comparison.png?dl=1)
+I plotted 3 predictions (Linear Regression, Decision Tree, My Final Model) and real values(labels) for 50 test data.(Index 0, 2, 4, ... , 98)  
 With some exception, my final model's prediction is mostly closer to the real value or at least nearly same as the other model's predictions.
 
 
@@ -336,7 +336,11 @@ With some exception, my final model's prediction is mostly closer to the real va
 ### Free-Form Visualization
 To see feature importance, plotting heatmap is another good choice. Heatmap shows us the correlations among features, so we can determine the most important features by seeing the correlations between the target("Chance of Admit") and the other features(input variables)  
 ![heatmap](https://www.dropbox.com/s/fhagc6hfalifxxk/heatmap.png?dl=1)
-From the heatmap, we can see the top three important variables which are highly related to the target variable (Chance of Admit) are CGPA, GRE Score and TOEFL Score, which coincides with what we saw above.
+From the heatmap, we can see the top three important variables which are highly related to the target variable (Chance of Admit) are CGPA, GRE Score and TOEFL Score, which coincides with what we saw above.  
+
+Next, I want to introduce a pretty useful visualization that classifies machine learning algorithms as well as selection process very well: (from blogs.sas.com)
+![ML_map](https://www.dropbox.com/s/m4fmfecjd5au3jw/ML_map.png?dl=1)
+It can help us to determine which machine learning algorithm should we use.
 
 
 
