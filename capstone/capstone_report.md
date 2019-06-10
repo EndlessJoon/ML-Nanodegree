@@ -308,25 +308,25 @@ To test my final model, I tried some test data and compared the predicted output
 The part of results are as follows:  
 |Index|Prediction|Real|
 |:--------:|:--------:|:--------:|
-|0|0.91|0.93|
-|10|0.72|0.45|
-|20|0.67|0.67|
-|30|0.56|0.59|
-|40|0.97|0.96|
+|0|0.93|0.93|
+|10|0.70|0.45|
+|20|0.65|0.67|
+|30|0.57|0.59|
+|40|0.95|0.96|
 |50|0.89|0.93|
-|60|0.63|0.68|
-|70|0.62|0.64|
-|80|0.77|0.80|
-|90|0.74|0.73|
+|60|0.62|0.68|
+|70|0.60|0.64|
+|80|0.69|0.80|
+|90|0.75|0.73|
 My final model seems to work well and is making reasonable outputs for test(unseen) data.
 
 
 ### Justification
 To compare my final model with benchmarks, I repeated the above process: I entered the same input data into the benchmark models and compared the results. (see the source code in 'capstone.ipynb')  
 I attached the resulting plot here:
-![comparison](https://www.dropbox.com/s/4ul4y6jmkcgb1jw/comparison.png?dl=1)
-I plotted 3 predictions (LR,DT,RF) and real values(labels) for 10 test data.(Index 0, 10, 20, 30, 40, 50, 60, 70, 80, 90)  
-Except in index 10, Linear Regression model's prediction is closer to the real value or at least nearly same as the other model's predictions.
+![comp](https://www.dropbox.com/s/sk90bu0b5m2693f/comparison.png?dl=1)
+I plotted 3 predictions (Linear Regression, Decision Tree, My Final Model) and real values(labels) for 10 test data.(Index 0, 10, 20, 30, 40, 50, 60, 70, 80, 90)  
+With some exception, my final model's prediction is mostly closer to the real value or at least nearly same as the other model's predictions.
 
 
 
