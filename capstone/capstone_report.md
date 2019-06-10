@@ -122,7 +122,6 @@ When I used Linear Regression algorithm, I used "Chance of Admit" as a dependent
 ### Benchmark
 
 I benchmarked several algrithms not only in regression category but also in classification category: 
-* Linear Regression
 * Decision Tree
 * Random Forest 
 * SVM(Support Vector Machine)
@@ -131,8 +130,17 @@ I benchmarked several algrithms not only in regression category but also in clas
 * Random Forest Classifier
 * Logistic Regression
 
+Let's look at briefly each benchmark algorithm:
+|Algorithm|Explanation|
+|:--------:|:--------|
+|Decision Tree|Decision tree can be used to classification and regression both having a tree like structure. In a decision tree building algorithm first the best attribute of dataset is placed at the root, then training dataset is split into subsets. Splitting of data depends on the features of datasets. This process is done until the whole data is classified and we find leaf node at each branch. Information gain can be calculated to find which feature is giving us the highest information gain. Decision trees are built for making a training model which can be used to predict class or the value of target variable.|
+|Random Forest|This also can be used for classification as well as regression. Multiple number of decision trees taken together forms a random forest algorithm. Each decision tree includes some rule-based system. For the given training dataset with targets and features, the decision tree algorithm will have set of rules. In random forest unlike decision trees there is no need to calculate information gain to find root node. It use the rules of each randomly created decision tree to predict the outcome and stores the predicted outcome. Further it calculates the vote for each predicted target. Thus high voted prediction is considered as the final prediction from the random forest algorithm.|
+|Support Vector Machine|Support vector machine is a binary classifier. Raw data is drawn on the n- dimensional plane. In this a separating hyperplane is drawn to differentiate the datasets. The line drawn from centre of the line separating the two closest data-points of different categories is taken as an optimal hyperplane. This optimised separating hyperplane maximizes the margin of training data. Through this hyperplane, new data can be categorised.|
+|Gaussian Naive Bayes| It is a technique for constructing classifiers which is based on Bayes theorem used even for highly sophisticated classification methods. It learns the probability of an object with certain features belonging to a particular group or class. In short, it is a probabilistic classifier. In this method occurrence of each feature is independent of occurrence another feature. It only needs small amount of training data for classification, and all terms can be precomputed thus classifying becomes easy, quick and efficient.|
+|Logistic Regression| In logistic regression we have lot of data whose classification is done by building an equation. This method is used to find the discrete dependent variable from the set of independent variables. Its goal is to find the best fit set of parameters. In this classifier, each feature is multiplied by a weight and then all are added. Then the result is passed to sigmoid function which produces the binary output. Logistic regression generates the coefficients to predict a logit transformation of the probability.|
+
 Each benchmark was performed on train data set at first, and then on test set.
-Thinking of overfitting due to small data size, I used Scikit Learn's k-fold cross-validation for refinement. It randomly splits the training set into k distinct subsets called folds, then it trains and evaluates the model k times, picking a different fold for evaluation every time and training on the other k-1 folds. (I can decide and give the number k to the cross-validation function as a parameter)  
+Thinking of overfitting due to small data size, I used Scikit Learn's k-fold cross-validation to diminish overfitting and get better results. It randomly splits the training set into k distinct subsets called folds, then it trains and evaluates the model k times, picking a different fold for evaluation every time and training on the other k-1 folds. (I can decide and give the number k to the cross-validation function as a parameter)  
 The results are in the following Implementation section.
 
 
