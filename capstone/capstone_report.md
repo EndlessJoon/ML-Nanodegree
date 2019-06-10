@@ -176,7 +176,8 @@ To use that, I imported mean_squared_error from sckit learn and gave train data 
 6. Compare with test data set : After prediction and measurement with train data, to see the performance of my prediction model on unseen data, I performed prediction and measurement (wth RMSE) again on test data set. If the RMSE of train set is far lower than that of test set, this means overfitting happens. My result was train RMSE: 0.0593 and test RMSE: 0.0608, nearly same two numbers, which means overfitting did not happen in my linear regression model.
 
 7. Benchmark : To benchmark, I tried some other regression algorithms including Decision Tree, Random Forest. Also, for wider benchmarking I tried some classification algorithms including SVM(Support Vector Machine), Gaussian Naive Bayes, Decision Tree Classifier, Random Forest Classifier and Logistic Regression. To use these classification algorithms I needed to define binary classification label. I divided the target variable - Chance of Admit - into two classes, 1 and 0. When the Chance of Admit is greater than 80%, the data instance is labelled with '1' or else, it is labelled with '0'. For metric I used Sckit learn's score method(the mean accuracy on the given test data and labels) as well as f1 Score(weighted average of the precision and recall)  
-The hyperparameters for each benchmark algorithm I used are as follows:
+
+    The hyperparameters for each benchmark algorithm I used are as follows:
 * Decision Tree (random_state=42, and default settings for the others)
     > DecisionTreeRegressor(criterion='mse', max_depth=None, max_features=None,
            max_leaf_nodes=None, min_impurity_decrease=0.0,
@@ -184,29 +185,56 @@ The hyperparameters for each benchmark algorithm I used are as follows:
            min_samples_split=2, min_weight_fraction_leaf=0.0,
            presort=False, random_state=42, splitter='best')
 * Random Forest (n_estimators=100, random_state=42, and defaults for the others)
-    > RandomForestRegressor()
-* 
-
+    > RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
+           max_features='auto', max_leaf_nodes=None,
+           min_impurity_decrease=0.0, min_impurity_split=None,
+           min_samples_leaf=1, min_samples_split=2,
+           min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None,
+           oob_score=False, random_state=42, verbose=0, warm_start=False)
+* Support Vector Machine (random_state=42, and defaults for the others)
+    > SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+            decision_function_shape='ovr', degree=3, gamma='auto_deprecated',
+            kernel='rbf', max_iter=-1, probability=False, random_state=42,
+            shrinking=True, tol=0.001, verbose=False)
+* Gaussian Naive Bayes (all default setting)  
+    > GaussianNB(priors=None, var_smoothing=1e-09)
+* Decision Tree Classifier (all default setting)
+    > DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
+            max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, presort=False, random_state=None,
+            splitter='best')
+* Random Forest Classifier (n_estimators=100, random_state=42, and defaults for the others)
+    > RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None,
+            oob_score=False, random_state=42, verbose=0, warm_start=False)
+* Logistic Regression (all default setting)
+    > LogisticRegression(C=1.0, class_weight=None, dual=False,      
+            fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='warn', n_jobs=None, penalty='l2', random_state=None, solver='warn', tol=0.0001, verbose=0, warm_start=False)
 
 
 8. Benchmark Results : 
 * Regression Algorithms Benchmark Results
  
-|Algorithm|RMSE(train)|RMSE(test)|
-|:--------:|:--------:|:--------:|
-|Linear Regression|0.0593|0.0608|
-|Decision Tree|1.6653e-17|0.0929|
-|Random Forest|0.0250|0.0651|
+    |Algorithm|RMSE(train)|RMSE(test)|
+    |:--------:|:--------:|:--------:|
+    |Linear Regression|0.0593|0.0608|
+    |Decision Tree|1.6653e-17|0.0929|
+    |Random Forest|0.0250|0.0651|
 
 * Classification Algorithms Benchmark Results
 
-|Algorithm|Score|F1 Score|
-|:--------:|:--------:|:--------:|
-|SVM|0.97|0.94|
-|Gaussian Naive Bayes|0.93|0.88|
-|Decision Tree Classifier|0.95|0.91|
-|Random Forest Classifier|0.96|0.92|
-|Logistic Regression|0.96|0.92|
+    |Algorithm|Score|F1 Score|
+    |:--------:|:--------:|:--------:|
+    |SVM|0.97|0.94|
+    |Gaussian Naive Bayes|0.93|0.88|
+    |Decision Tree Classifier|0.95|0.91|
+    |Random Forest Classifier|0.96|0.92|
+    |Logistic Regression|0.96|0.92|
 
 9. Try cross validation with different validation sets : I divided the original data set into two groups - train, test set - to train(fit)the model with train set and test the model for unseen data. But overfit problem occurred for some models especially it was serious on decision tree algorithm (RMSE for train set was nearly zero!)  
 There can be many reasons that this overfitting problem occurs but the small size of data set is major reason, I think.
