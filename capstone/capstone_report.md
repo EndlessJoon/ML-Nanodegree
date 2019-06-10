@@ -26,7 +26,8 @@ There are many discussions about which metric is better for many circumstances. 
 
 Secondly, I benchmarked a few classification algorithms so I need another metric suitable for comparing classification models. As for regression models, there are many metrics for classification models including AUC-ROC Curve, Log loss, F-Beta score, F1 score, an so on.  
 Among them I will use F1 score as a metric because it is commonly used for many classification problems and easy to understand. (Actually, I have more knowledge and experience in F1 score than another metrics. )  
-F1 Score is harmonic mean of precision and recall. That is, F1 = 2*precision*recall / (precision + recall)  
+F1 Score is harmonic mean of precision and recall. That is, F1 = 2 * precision * recall / (precision + recall)  
+
 'Precision' is the number of correct positive results divided by the number of all positive results returned by the classifier.  
 'Recall' is the number of correct positive results divided by the number of all relevant samples (all samples that should have been identified as positive).  
 (For more detail, please refer to these links:https://medium.com/thalus-ai/performance-metrics-for-classification-problems-in-machine-learning-part-i-b085d432082b  https://en.wikipedia.org/wiki/F1_score) 
@@ -226,6 +227,8 @@ To use that, I imported mean_squared_error from sckit learn and gave train data 
     |Decision Tree|1.6653e-17|0.0929|
     |Random Forest|0.0250|0.0651|
 
+![reg_comp](https://www.dropbox.com/s/nbmtkw5cphpor86/reg_comp.png?dl=1)
+
 * Classification Algorithms Benchmark Results
 
     |Algorithm|Score|F1 Score|
@@ -235,6 +238,9 @@ To use that, I imported mean_squared_error from sckit learn and gave train data 
     |Decision Tree Classifier|0.95|0.91|
     |Random Forest Classifier|0.96|0.92|
     |Logistic Regression|0.96|0.92|
+    
+![cla_comp](https://www.dropbox.com/s/jfgb7bev7xtnwjx/cla_comp.png?dl=1)
+
 
 9. Try cross validation with different validation sets : I divided the original data set into two groups - train, test set - to train(fit)the model with train set and test the model for unseen data. But overfit problem occurred for some models especially it was serious on decision tree algorithm (RMSE for train set was nearly zero!)  
 There can be many reasons that this overfitting problem occurs but the small size of data set is major reason, I think.
@@ -244,14 +250,24 @@ The cross validation results are as follows: (RMSE Mean for test data set)
 * [Linear Regression] 0.059
 * [Decision Tree] 0.085
 * [Random Forest] 0.064
-* Comparing to the benchmark results in Implementation section, we can see that they are considerably improved.
+
+![cla_comp](https://www.dropbox.com/s/07uemq34s7u0nhh/cv_comp.png?dl=1)
+From the above plot we can see that they are considerably improved after cross validation.
 
 
 ### Refinement
 I tried to refine the prediction model with hyperparameter tuning. As there is no room for hyperparameter tuning in Linear Regression, I tried with Random Forest algorithm.  
 To find out the best hyperparameter combination, I used Grid Search of Scikit Learn. And the next, I also tried Randomized Search to compare the result.  
 At first, let's take a look at briefly these two methods:
-
+(https://medium.com/@senapati.dipak97/grid-search-vs-random-search-d34c92946318)
+|Method|Explanation|
+|:--------:|:--------|
+|Grid Search|In Grid Search, we try every combination of a preset list of values of the hyper-parameters and evaluate the model for each combination. The pattern followed here is similar to the grid, where all the values are placed in the form of a matrix. Each set of parameters is taken into consideration and the accuracy is noted. Once all the combinations are evaluated, the model with the set of parameters which give the top accuracy is considered to be the best.|
+|Randomized Search|Randomized search is a technique where random combinations of the hyperparameters are used to find the best solution for the built-in model. It tries random combinations of a range of values. To optimize with randomized search, the function is evaluated at some number of random configurations in the parameter space.|
+![grid](https://www.dropbox.com/s/la0w28gsfnrtkaj/grid.png?dl=1)
+The above figure is the visual representation of grid search.
+![rand](https://www.dropbox.com/s/3348ngtznfbtg8d/rand.png?dl=1)
+The above figure is the visual representation of randomized search.
 
 
 
