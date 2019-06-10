@@ -269,7 +269,36 @@ The above figure is the visual representation of grid search.
 ![rand](https://www.dropbox.com/s/3348ngtznfbtg8d/rand.png?dl=1)
 The above figure is the visual representation of randomized search.
 
+To implement grid search, I imported GridSearchCV from Scikit Learn and defined parameter grid first:
+> param_grid = [
+    # try 9 (3×3) combinations of hyperparameters
+    {'n_estimators': [3, 10, 30], 'max_features': [2, 4, 6]},
+    # then try 6 (2×3) combinations with bootstrap set as False
+    {'bootstrap': [False], 'n_estimators': [3, 10], 'max_features': [2, 3, 4]},
 
+Next, set the hyperparameters(estimator=RandomForestRegressor, cv=5, scoring='neg_mean_squared_error', return_train_score=True, and the others as defaults), and execute grid search.
+> forest_reg = RandomForestRegressor(random_state=42)
+    # train across 5 folds, that's a total of (9+6)*5=75 rounds of training 
+  grid_search = GridSearchCV(forest_reg, param_grid, cv=5,
+                           scoring='neg_mean_squared_error', return_train_score=True)
+  grid_search.fit(x_train, y_train)
+  
+After finding the best estimator with grid search and applying that to the model, I got 0.06682 RMSE. (little bit worse than random forest model's RMSE after cross validation)
+
+Next, I imported RandomizedSearchCV from Scikit Learn and followed the similar procedure:
+>param_distribs = {
+        'n_estimators': randint(low=1, high=200),
+        'max_features': randint(low=1, high=6),
+    }
+forest_reg = RandomForestRegressor(random_state=42)
+rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,
+                                n_iter=10, cv=5, scoring='neg_mean_squared_error', random_state=42)
+rnd_search.fit(x_train, y_train)
+
+After finding the best estimator with randomized search and applying that to the model, I got 0.06309 RMSE. (little bit better than the random forest model's RMSE after cross validation)
+Here is the comparison plotting:
+![comp_rf](https://www.dropbox.com/s/u34zeqfr2527rdz/comp_rf.png?dl=1)
+My random forest model after applying randomized search shows best performance.
 
 ## IV. Results
 
