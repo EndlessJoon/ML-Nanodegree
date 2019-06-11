@@ -180,12 +180,14 @@ To use that, I imported mean_squared_error from sckit learn and gave train data 
 
     The hyperparameters for each benchmark algorithm I used are as follows:
 * Decision Tree (random_state=42, and default settings for the others)
+    ('random_state' is the seed used by the random number generator.)
     > DecisionTreeRegressor(criterion='mse', max_depth=None, max_features=None,
            max_leaf_nodes=None, min_impurity_decrease=0.0,
            min_impurity_split=None, min_samples_leaf=1,
            min_samples_split=2, min_weight_fraction_leaf=0.0,
            presort=False, random_state=42, splitter='best')
 * Random Forest (n_estimators=100, random_state=42, and defaults for the others)
+    ('n_estimators' is the number of trees in the forest.)
     > RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
            max_features='auto', max_leaf_nodes=None,
            min_impurity_decrease=0.0, min_impurity_split=None,
@@ -276,7 +278,10 @@ To implement grid search, I imported GridSearchCV from Scikit Learn and defined 
     # then try 6 (2×3) combinations with bootstrap set as False
     {'bootstrap': [False], 'n_estimators': [3, 10], 'max_features': [2, 3, 4]},
 
-Next, set the hyperparameters(estimator=RandomForestRegressor, cv=5, scoring='neg_mean_squared_error', return_train_score=True, and the others as defaults), and execute grid search.
+Next, set the hyperparameters(estimator=RandomForestRegressor, cv=5, scoring='neg_mean_squared_error', return_train_score=True, and the others as defaults), and execute grid search.  
+* cv : This determines the cross-validation splitting strategy.
+* return_train_score : If 'False', the cv_results_ attribute will not include training scores.
+
 > forest_reg = RandomForestRegressor(random_state=42)
     # train across 5 folds, that's a total of (9+6)*5=75 rounds of training 
   grid_search = GridSearchCV(forest_reg, param_grid, cv=5,
@@ -295,8 +300,9 @@ rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,
                                 n_iter=10, cv=5, scoring='neg_mean_squared_error', random_state=42)
 rnd_search.fit(x_train, y_train)
 
-After finding the best estimator with randomized search and applying that to the model, I got 0.06309 RMSE. (little bit better than the random forest model's RMSE after cross validation)
-Here is the comparison plotting:
+After finding the best estimator with randomized search and applying that to the model, I got 0.06309 RMSE. (this is the best RMSE so far)
+Here is the comparison plotting:  
+
 ![comp_rf](https://www.dropbox.com/s/u34zeqfr2527rdz/comp_rf.png?dl=1)
 My random forest model after applying randomized search shows best performance.
 
