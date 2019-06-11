@@ -358,15 +358,49 @@ In that case, this visualization can be a useful guidance.
 
 ### Reflection
 In this project I made a prediction model to predict the 'chance of admit' for a graduate school with some input features including CGPA, GRE score, TOEFL score and so on.  
-To make the model I benchmarked many algorithms in regression as well as classification models. For a metric I used RMSE (Root Mean Square Error) and used it to meaure the performance of algorithms. After benchmarking I got my final model (Linear Regression model) and tested it with some input data.  
-One interesting thing occurred in fitting the train data with Decision Tree algorithm. The metric - RMSE - was nearly zero. At first, I thought there must be some calculation error or parameter setting error, but I came to know it was significant overfitting. To address this overfitting problem, I used Cross Validation which divides the original data set into small groups and use them as validation data. After benchmarks and refinement I came to get my final model. 
+To make the model I benchmarked many algorithms in regression as well as classification models. For a metric I used RMSE (Root Mean Square Error) and used it to meaure the performance of algorithms.   
+One interesting thing occurred in fitting the train data with Decision Tree algorithm. The metric - RMSE - was nearly zero! At first, I thought there must be some calculation error or parameter setting error, but I came to know it was significant overfitting. To address this overfitting problem, I used cross validation which divides the original data set into small groups and use them one by one as validation data. After cross validation I could get rid of overfitting as well as get more improved score.  
+To further refine my model, I tried hyperparameter tuning with built-in functions of scikit learn. Those are grid search and randomized search.  
+After implementation of those two, as randomized search gave me the better score, I applied the best estimators (which the randomized search found) to my model which led to my final model.  
 
 
 
 ### Improvement
 The target variable I used in this project was the interviewees' reply (how much possibility(0% ~ 100% range) they expect they got the admission acceptance from the graduate school with there track records (i.e. the features including CGPA, GRE, TOEFL, and so on))  
 In other words, the label in this supervised learning problem was not the real results but the interviewees' expectations.  
-If I can collect the sufficiently many real acceptance data (Yes or No), and use them as labels I can make more useful prediction model.
+If I can collect the sufficiently many real acceptance data (Yes or No), and use them as labels I can make more useful prediction model.  
+From the implementation algorithm point of view, there are several ways to improve my prediction model, for example, another pre-processing techniques or different models. Among them I tried XGBoost.  
+XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible and portable. It implements machine learning algorithms under the Gradient Boosting framework.  
+XGBoost is being used frequently by Kaggle's top rankers because it has outstanding advantages as follows:
+* It implemented regularization, so it helps to reduce overfitting.
+* It implements parallel processing so is far faster as compared to GBM.
+* It has an built-in routine to handle missing values.
+* It makes splits upto the max_depth specified and then start pruning the tree backwards and remove splits beyond which there is no positive gain. Typical GBM would stop splitting a node when it encounters a negative loss in the split.
+* It allows user to run a cross-validation at each iteration of the boosting process and thus it is easy to get the exact optimum number of boosting iterations in a single run.
+* Users can start training an XGBoost model from its last iteration of previous run.
+
+To implement XGBoost, I installed the package and imported it to my ipynb source code.
+> import xgboost
+
+> xgb = xgboost.XGBRegressor(n_estimators=100, learning_rate=0.03, gamma=0.005, subsample=0.5, colsample_bytree=0.9, max_depth=2, random_state=42)
+
+Let's take a look at the parameters briefly:
+* gamma : A node is split only when the resulting split gives a positive reduction in the loss function. Gamma specifies the minimum loss reduction required to make a split. (default = 0)
+* subsample : Same as the subsample of GBM. Denotes the fraction of observations to be randomly samples for each tree. (default = 1)
+* colsample_bytree : Denotes the subsample ratio of columns for each split, in each level. (default = 1)
+* max_depth : The maximum depth of a tree. (default = 6)
+
+After changing these parameters several times on trial-and-error basis to get better result, I came to get the RMSE 0.06258, which is the best score so far.
+To use the tuning method like GridSearchCV will be smarter way to tune the parameters.
+
+To check the improvement, I plotted the comparison chart again with the same 50 test data:
+![comp_final](https://www.dropbox.com/s/i7ljsowptd3eq0l/comp_final.png?dl=1)
+From the above plot, we can see the improvement after applying XGBoost.
+
+
+                           
+                           
+
 
 
 -----------
