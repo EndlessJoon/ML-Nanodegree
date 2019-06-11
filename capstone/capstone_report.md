@@ -369,7 +369,7 @@ After implementation of those two, as randomized search gave me the better score
 The target variable I used in this project was the interviewees' reply (how much possibility(0% ~ 100% range) they expect they got the admission acceptance from the graduate school with there track records (i.e. the features including CGPA, GRE, TOEFL, and so on))  
 In other words, the label in this supervised learning problem was not the real results but the interviewees' expectations.  
 If I can collect the sufficiently many real acceptance data (Yes or No), and use them as labels I can make more useful prediction model.  
-From the implementation algorithm point of view, there are several ways to improve my prediction model, for example, another pre-processing techniques or different models. Among them I tried XGBoost.  
+From the implementation algorithm point of view, there are several ways to improve my prediction model, for example, another pre-processing techniques or different models. Among them I tried XGBoost. Bagging and Boosting is one of good options used to get better performance in machine learning. So with XGBoost I can expect to get improved model.  
 XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible and portable. It implements machine learning algorithms under the Gradient Boosting framework.  
 XGBoost is being used frequently by Kaggle's top rankers because it has outstanding advantages as follows:
 * It implemented regularization, so it helps to reduce overfitting.
