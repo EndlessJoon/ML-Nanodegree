@@ -304,7 +304,7 @@ My random forest model after applying randomized search shows best performance.
 
 
 ### Model Evaluation and Validation
-To test my final model, I tried some test data and compared the predicted outputs with labels.(see source code in 'capstone.ipynb')  
+To test my final model, I tried some test data and compared the predicted outputs with labels.(see the source code in 'capstone.ipynb')  
 The part of results are as follows:  
 |Index|Prediction|Real|
 |:--------:|:--------:|:--------:|
@@ -336,11 +336,17 @@ With some exception, my final model's prediction is mostly closer to the real va
 ### Free-Form Visualization
 To see feature importance, plotting heatmap is another good choice. Heatmap shows us the correlations among features, so we can determine the most important features by seeing the correlations between the target("Chance of Admit") and the other features(input variables)  
 ![heatmap](https://www.dropbox.com/s/fhagc6hfalifxxk/heatmap.png?dl=1)
-From the heatmap, we can see the top three important variables which are highly related to the target variable (Chance of Admit) are CGPA, GRE Score and TOEFL Score, which coincides with what we saw above.  
+From the heatmap, we can see the top three important variables which are highly related to the target variable (Chance of Admit) are CGPA, GRE Score and TOEFL Score, which coincides with what we saw in the 'Exploratory Visualization' section above.  
+For a comparison, let's plot the feature importances which we got from  'randomized search'. (see the source code in 'capstone.ipynb')
+![feature_importance](https://www.dropbox.com/s/clkpdjp8ogmwb8a/feature_importance.png?dl=1)
+We can see the same results with heatmap above.
 
-Next, I want to introduce a pretty useful visualization that classifies machine learning algorithms as well as selection process very well: (from blogs.sas.com)
+
+Next, I want to introduce a pretty useful visualization that classifies machine learning algorithms as well as selection process very well: (from blogs.sas.com)  
+When we want to solve a real-world problem with machine learning, we can frequently come across ambiguous situations that we can't be sure which algorithm we should apply.  
+In that case, this visualization can be a useful guidance.  
+
 ![ML_map](https://www.dropbox.com/s/m4fmfecjd5au3jw/ML_map.png?dl=1)
-It can help us to determine which machine learning algorithm should we use.
 
 
 
